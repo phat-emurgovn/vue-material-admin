@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-toolbar card dense color="transparent">
-      <v-toolbar-title><h4>Order</h4></v-toolbar-title>
+      <v-toolbar-title><h4>Users</h4></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon> <v-icon>more_vert</v-icon> </v-btn>
     </v-toolbar>
@@ -10,43 +10,24 @@
       <template>
         <v-data-table
           :headers="headers"
-          :items="listOrders"
+          :items="listUsers"
           :pagination.sync="pagination"
-          :total-items="totalOrders"
+          :total-items="totalUsers"
           :loading="loading"
           :rows-per-page-items="optionsPerPage"
           class="elevation-0 table-striped"
         >
           <template slot="items" slot-scope="props">
-            <td>{{ props.item.id }}</td>
-            <td class="text-xs-left">{{ props.item.title }}</td>
-            <td class="text-xs-left">
-              {{ props.item.price_amount + " " + props.item.price_currency }}
+            <td>
+              <v-avatar size="36px"> <v-icon>account_circle</v-icon> </v-avatar>
             </td>
-            <td class="text-xs-left">
-              {{
-                props.item.pay_amount +
-                  (props.item.pay_currency ? " " + props.item.pay_currency : "")
-              }}
-            </td>
-            <td class="text-xs-left">
-              <v-chip
-                label
-                small
-                :color="getColorByStatus(props.item.status)"
-                text-color="white"
-                >{{ props.item.status.toUpperCase() }}
-              </v-chip>
-            </td>
+            <td class="text-xs-left">{{ props.item.email }}</td>
+            <td class="text-xs-left">{{ props.item.email }}</td>
+            <td class="text-xs-left">0987777777</td>
             <td class="text-xs-left">
               {{ props.item.created_at | moment("from", "now") }}
             </td>
-            <td class="text-xs-left green--text">
-              {{
-                props.item.received_amount +
-                  (props.item.pay_currency ? " " + props.item.pay_currency : "")
-              }}
-            </td>
+            <td class="text-xs-left">{{ props.item.timezone }}</td>
             <td class="text-xs-left">
               <v-btn outline small color="indigo"> Detail </v-btn>
             </td>
@@ -62,7 +43,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "PlainTableOrder",
+  name: "TableUser",
   data() {
     return {
       optionsPerPage: [5, 10, 15, 20, 25, 30],
@@ -73,18 +54,16 @@ export default {
       },
       headers: [
         {
-          text: "#",
+          text: "",
           align: "left",
-          sortable: false,
-          value: "id"
+          sortable: false
         },
-        { text: "Title", sortable: false, value: "deadline" },
-        { text: "Price", sortable: false, value: "progress" },
-        { text: "Pay amount", sortable: false, value: "status" },
-        { text: "Status", sortable: false, value: "status" },
-        { text: "Created", sortable: false, value: "status" },
-        { text: "Received amount", sortable: false, value: "status" },
-        { text: "", sortable: false, value: "status" }
+        { text: "Name", sortable: false },
+        { text: "Email", sortable: false },
+        { text: "Phone", sortable: false },
+        { text: "Joined date", sortable: false },
+        { text: "Timezone", sortable: false },
+        { text: "", sortable: false }
       ],
       colors: {
         unconfirmed: "blue",
@@ -96,7 +75,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["listOrders", "totalOrders"])
+    ...mapGetters(["listUsers", "totalUsers"])
   },
   methods: {
     getColorByStatus(status) {
@@ -105,7 +84,7 @@ export default {
     getData() {
       this.loading = true;
       this.$store
-        .dispatch("fetchListOrder", {
+        .dispatch("fetchListUser", {
           page: this.pagination.page,
           per_page: this.pagination.rowsPerPage
         })

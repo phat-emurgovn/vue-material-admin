@@ -322,7 +322,7 @@ export default [
     name: "users",
     component: () =>
       import(/* webpackChunkName: "routes" */
-        `@/views/orders/OrdersList.vue`)
+        `@/views/users/UsersList.vue`)
   }, {
     path: "/profile",
     meta: {breadcrumb: true},

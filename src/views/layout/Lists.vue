@@ -3,23 +3,6 @@
     <v-container grid-list-xl fluid>
       <v-layout row wrap>
         <v-flex lg4>
-          <v-widget title="Default">
-            <div slot="widget-content">
-              <v-list>
-                <v-list-tile avatar v-for="item in users" :key="item.title" @click="handleClick">
-                  <v-list-tile-action>
-                    <v-icon color="pink">star</v-icon>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title v-text="item.name"></v-list-tile-title>
-                  </v-list-tile-content>
-                  <v-list-tile-avatar>
-                    <img :src="item.avatar">
-                  </v-list-tile-avatar>
-                </v-list-tile>
-              </v-list>
-            </div>
-          </v-widget>
           <v-widget title="Two line" class="mt-3">
             <div slot="widget-content">
               <v-list two-line subheader>
@@ -189,23 +172,6 @@
               </v-list>
             </div>
           </v-widget>
-          <v-widget title="Long dark list with scroll" class="mt-3">
-            <div slot="widget-content" style="max-height: 250px; overflow-y: scroll">
-              <v-list dense dark>
-                <v-list-tile avatar v-for="item in allUsers" :key="item.title" @click="handleClick">
-                  <v-list-tile-action>
-                    <v-icon color="pink">star</v-icon>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title v-text="item.name"></v-list-tile-title>
-                  </v-list-tile-content>
-                  <v-list-tile-avatar>
-                    <img :src="item.avatar">
-                  </v-list-tile-avatar>
-                </v-list-tile>
-              </v-list>
-            </div>
-          </v-widget>
         </v-flex>
         <v-flex lg4>
           <v-widget title="Expandable list">
@@ -315,7 +281,6 @@
 </template>
 
 <script>
-import { getUser } from '@/api/user';
 import VWidget from '@/components/VWidget';
 export default {
   components: {
@@ -406,12 +371,7 @@ export default {
     };
   },
   computed: {
-    users () {
-      return getUser(3);
-    },
-    allUsers () {
-      return getUser();
-    }
+
   },
   methods: {
     handleClick (e) {

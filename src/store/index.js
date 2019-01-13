@@ -1,14 +1,16 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import user from "./modules/user";
+import profile from "./modules/profile";
 import order from "./modules/order";
+import user from "./modules/user";
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {
-    user,
-    order
+    profile,
+    order,
+    user
   },
   state: {},
   mutations: {},
