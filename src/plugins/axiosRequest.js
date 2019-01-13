@@ -40,7 +40,7 @@ service.interceptors.response.use(
       };
       setToken(token);
     }
-    return response.data;
+    return response;
   },
   error => {
     console.log("err" + error); // for debug
