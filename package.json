@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "echarts": "^4.2.0-rc.2",
     "font-awesome": "^4.7.0",
     "lodash.truncate": "^4.4.2",
