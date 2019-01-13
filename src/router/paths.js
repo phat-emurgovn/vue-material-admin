@@ -121,14 +121,6 @@ export default [
         `@/views/ui/Carousels.vue`)
   },
   {
-    path: "/components/icon",
-    meta: {breadcrumb: true},
-    name: "components/icons",
-    component: () =>
-      import(/* webpackChunkName: "routes" */
-        `@/views/ui/Icon.vue`)
-  },
-  {
     path: "/components/progress",
     meta: {breadcrumb: true},
     name: "components/progress",
@@ -153,14 +145,6 @@ export default [
         `@/views/ui/Tooltip.vue`)
   },
   {
-    path: "/pickers/datepicker",
-    meta: {breadcrumb: true},
-    name: "pickers/datepicker",
-    component: () =>
-      import(/* webpackChunkName: "routes" */
-        `@/views/ui/Datepicker.vue`)
-  },
-  {
     path: "/components/typography",
     meta: {breadcrumb: true},
     name: "components/typography",
@@ -175,14 +159,6 @@ export default [
     component: () =>
       import(/* webpackChunkName: "routes" */
         `@/views/ui/Colors.vue`)
-  },
-  {
-    path: "/pickers/timepicker",
-    meta: {breadcrumb: true},
-    name: "pickers/timepicker",
-    component: () =>
-      import(/* webpackChunkName: "routes" */
-        `@/views/ui/Timepicker.vue`)
   },
   {
     path: "/layout/bottomsheets",

@@ -1,6 +1,8 @@
 <template>
     <div>
-        <plain-table-order></plain-table-order>
+        <v-container grid-list-xl fluid>
+            <plain-table-order></plain-table-order>
+        </v-container>
     </div>
 </template>
 

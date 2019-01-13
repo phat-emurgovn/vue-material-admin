@@ -5,8 +5,9 @@
  */
 import colors from 'vuetify/es5/util/colors';
 import _object from 'lodash/object';
+import echarts from "echarts/dist/echarts-en";
 
-const ECharts = window.echarts || undefined;
+const ECharts = echarts || undefined;
 if (ECharts === undefined) {
   console.error('ECharts is not defined');
 }
