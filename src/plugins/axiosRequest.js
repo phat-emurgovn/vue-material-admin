@@ -3,8 +3,7 @@ import { getToken, setToken } from "@/util/auth";
 
 // create an axios instance
 const service = axios.create({
-  baseURL: "http://localhost:3000",
-  // baseURL: process.env.BASE_API,
+  baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000 // request timeout
 });
 
