@@ -129,6 +129,13 @@ export default {
           this.loading = false;
         });
     }
+  }, watch: {
+    $route: {
+      handler: function(route) {
+        this.redirect = route.query && route.query.redirect;
+      },
+      immediate: true
+    }
   }
 };
 </script>
