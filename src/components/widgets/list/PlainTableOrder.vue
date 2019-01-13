@@ -14,20 +14,41 @@
           :pagination.sync="pagination"
           :total-items="totalOrders"
           :loading="loading"
+          :rows-per-page-items="optionsPerPage"
           class="elevation-0 table-striped"
         >
           <template slot="items" slot-scope="props">
             <td>{{ props.item.id }}</td>
-            <td class="text-xs-left">{{ props.item.product }}</td>
-            <td class="text-xs-left">{{ props.item.price }}</td>
+            <td class="text-xs-left">{{ props.item.title }}</td>
+            <td class="text-xs-left">
+              {{ props.item.price_amount + " " + props.item.price_currency }}
+            </td>
+            <td class="text-xs-left">
+              {{
+                props.item.pay_amount +
+                  (props.item.pay_currency ? " " + props.item.pay_currency : "")
+              }}
+            </td>
             <td class="text-xs-left">
               <v-chip
                 label
                 small
                 :color="getColorByStatus(props.item.status)"
                 text-color="white"
-                >{{ props.item.status }}
+                >{{ props.item.status.toUpperCase() }}
               </v-chip>
+            </td>
+            <td class="text-xs-left">
+              {{ props.item.created_at | moment("from", "now") }}
+            </td>
+            <td class="text-xs-left green--text">
+              {{
+                props.item.received_amount +
+                  (props.item.pay_currency ? " " + props.item.pay_currency : "")
+              }}
+            </td>
+            <td class="text-xs-left">
+              <v-btn outline small color="indigo"> Detail </v-btn>
             </td>
           </template>
         </v-data-table>
@@ -43,6 +64,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
+      optionsPerPage: [5, 10, 15, 20, 25, 30],
       loading: false,
       pagination: {
         page: 1,
@@ -55,14 +77,20 @@ export default {
           sortable: false,
           value: "id"
         },
-        { text: "Product", value: "deadline" },
-        { text: "Price", value: "progress" },
-        { text: "Status", value: "status" }
+        { text: "Title", sortable: false, value: "deadline" },
+        { text: "Price", sortable: false, value: "progress" },
+        { text: "Pay amount", sortable: false, value: "status" },
+        { text: "Status", sortable: false, value: "status" },
+        { text: "Created", sortable: false, value: "status" },
+        { text: "Received amount", sortable: false, value: "status" },
+        { text: "", sortable: false, value: "status" }
       ],
       colors: {
-        processing: "blue",
-        sent: "red",
-        delivered: "green"
+        unconfirmed: "blue",
+        pending: "orange",
+        paid: "green",
+        expired: "pink",
+        illegal: "red"
       }
     };
   },

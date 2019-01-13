@@ -19,6 +19,7 @@
     "vee-validate": "^2.1.4",
     "vue": "^2.5.21",
     "vue-fullcalendar": "^1.0.9",
+    "vue-moment": "^4.0.0",
     "vue-perfect-scrollbar": "^0.1.0",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.1",
