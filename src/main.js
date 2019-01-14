@@ -8,8 +8,11 @@ import "roboto-fontface/css/roboto/roboto-fontface.css";
 import "font-awesome/css/font-awesome.css";
 import "echarts/dist/echarts-en";
 import VueMoment from "vue-moment";
+import VeeValidate from "vee-validate";
 
 Vue.use(VueMoment);
+Vue.use(VeeValidate);
+
 Vue.config.productionTip = false;
 
 new Vue({

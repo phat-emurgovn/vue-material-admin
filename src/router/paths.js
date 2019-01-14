@@ -332,7 +332,7 @@ export default [
     name: "profile",
     component: () =>
       import(/* webpackChunkName: "routes" */
-      `@/views/orders/OrdersList.vue`)
+      `@/views/form/UserProfile.vue`)
   },
   {
     path: "/password",
@@ -340,7 +340,7 @@ export default [
     name: "changePassword",
     component: () =>
       import(/* webpackChunkName: "routes" */
-      `@/views/orders/OrdersList.vue`)
+      `@/views/form/UpdatePassword.vue`)
   },
   {
     path: "/crypto-currencies",
