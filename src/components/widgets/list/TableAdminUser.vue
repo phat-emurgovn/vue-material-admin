@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-toolbar card dense color="transparent">
-      <v-toolbar-title><h4>Users</h4></v-toolbar-title>
+      <v-toolbar-title><h4>AdminUsers</h4></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon> <v-icon>more_vert</v-icon> </v-btn>
     </v-toolbar>
@@ -10,9 +10,9 @@
       <template>
         <v-data-table
           :headers="headers"
-          :items="listUsers"
+          :items="listAdminUsers"
           :pagination.sync="pagination"
-          :total-items="totalUsers"
+          :total-items="totalAdminUsers"
           :loading="loading"
           :rows-per-page-items="optionsPerPage"
           class="elevation-0 table-striped"
@@ -23,9 +23,7 @@
             </td>
             <td class="text-xs-left">{{ formatFullName(props.item) }}</td>
             <td class="text-xs-left">{{ props.item.email }}</td>
-            <td class="text-xs-left">
-              {{ formatPhone(props.item) }}
-            </td>
+            <td class="text-xs-left">{{ formatPhone(props.item) }}</td>
             <td class="text-xs-left">
               {{ props.item.created_at | moment("from", "now") }}
             </td>
@@ -78,13 +76,16 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["listUsers", "totalUsers"])
+    ...mapGetters(["listAdminUsers", "totalAdminUsers"])
   },
   methods: {
+    getColorByStatus(status) {
+      return this.colors[status];
+    },
     getData() {
       this.loading = true;
       this.$store
-        .dispatch("fetchListUser", {
+        .dispatch("fetchListAdminUser", {
           page: this.pagination.page,
           per_page: this.pagination.rowsPerPage
         })

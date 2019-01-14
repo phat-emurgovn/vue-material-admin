@@ -356,6 +356,6 @@ export default [
     name: "adminUsers",
     component: () =>
       import(/* webpackChunkName: "routes" */
-      `@/views/orders/OrdersList.vue`)
+      `@/views/admins/AdminUsersList.vue`)
   }
 ];

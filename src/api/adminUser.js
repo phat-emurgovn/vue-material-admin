@@ -1,6 +1,6 @@
 import request from "@/plugins/axiosRequest";
 
-const url = "/api/admin/v1/users";
+const url = "/api/admin/v1/admin_users";
 
 function fetchList(query) {
   return request({
