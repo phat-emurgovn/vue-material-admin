@@ -348,7 +348,7 @@ export default [
     name: "cryptoCurrencies",
     component: () =>
       import(/* webpackChunkName: "routes" */
-      `@/views/orders/OrdersList.vue`)
+      `@/views/cryptoCurrencies/CryptoCurrenciesList.vue`)
   },
   {
     path: "/admin-users",

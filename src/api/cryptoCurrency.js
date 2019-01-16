@@ -1,6 +1,6 @@
 import request from "@/plugins/axiosRequest";
 
-const url = "/api/admin/v1/orders";
+const url = "/api/admin/v1/crypto_currencies";
 
 export function fetchList(query) {
   return request({
@@ -10,10 +10,19 @@ export function fetchList(query) {
   });
 }
 
-export function fetchOrder(id) {
+export function fetchItem(id) {
   return request({
     url: url,
     method: "get",
     params: { id }
+  });
+}
+
+export function updateItem(data) {
+  console.log(data.id);
+  return request({
+    url: `${url}/${data.id}`,
+    method: "put",
+    data: data
   });
 }

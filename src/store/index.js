@@ -4,6 +4,7 @@ import profile from "./modules/profile";
 import order from "./modules/order";
 import user from "./modules/user";
 import adminUser from "./modules/adminUser";
+import cryptoCurrency from "./modules/cryptoCurrency";
 
 Vue.use(Vuex);
 
@@ -12,7 +13,8 @@ const store = new Vuex.Store({
     profile,
     order,
     user,
-    adminUser
+    adminUser,
+    cryptoCurrency
   },
   state: {},
   mutations: {},

@@ -102,31 +102,7 @@
           </v-widget>
         </v-flex>
         <!-- social/weather card start -->
-        <v-flex lg4 sm12 xs12> <profile-card> </profile-card> </v-flex>
-        <v-flex lg4 sm12 xs12>
-          <box-chart
-            card-color="indigo"
-            title="Trending"
-            sub-title="10%"
-            icon="trending_up"
-            :data="siteTrafficData"
-            :chart-color="[color.indigo.lighten1]"
-            type="line"
-          >
-          </box-chart>
-          <box-chart
-            class="mt-4"
-            card-color="pink"
-            title="Page views"
-            sub-title="10%"
-            icon="trending_up"
-            :data="siteTrafficData"
-            :chart-color="[color.pink.darken1, 'rgba(255,255,255,0.3)']"
-            gradient
-            type="area"
-          >
-          </box-chart>
-        </v-flex>
+
         <!-- statistic section -->
         <v-flex lg4 sm12 xs12>
           <linear-statistic
@@ -165,50 +141,6 @@
           >
           </linear-statistic>
         </v-flex>
-        <!-- Circle statistic -->
-        <v-flex
-          lg4
-          sm12
-          xs12
-          v-for="(item, index) in trending"
-          :key="'c-trending' + index"
-        >
-          <circle-statistic
-            :title="item.subheading"
-            :sub-title="item.headline"
-            :caption="item.caption"
-            :icon="item.icon.label"
-            :color="item.linear.color"
-            :value="item.linear.value"
-          >
-          </circle-statistic>
-        </v-flex>
-        <v-flex lg6 sm12 xs12>
-          <v-widget title="Activities" contentBg="white">
-            <div slot="widget-content">
-              <ol
-                class="timeline timeline-activity timeline-point-sm timeline-content-right"
-              >
-                <li
-                  class="timeline-block"
-                  v-for="(item, index) in activity"
-                  :key="index"
-                >
-                  <div class="timeline-point">
-                    <v-circle dot large :color="item.color"></v-circle>
-                  </div>
-                  <div class="timeline-content">
-                    <time datetime="2018" class="subheading">{{
-                      item.timeString
-                    }}</time>
-                    <div class="py-2 text--secondary" v-html="item.text"></div>
-                  </div>
-                </li>
-              </ol>
-            </div>
-          </v-widget>
-        </v-flex>
-        <v-flex lg7 sm12 xs12> <plain-table></plain-table> </v-flex>
       </v-layout>
     </v-container>
   </div>
@@ -219,10 +151,8 @@ import API from "@/api";
 import EChart from "@/components/chart/echart";
 import MiniStatistic from "@/components/widgets/statistic/MiniStatistic";
 import ProfileCard from "@/components/widgets/card/ProfileCard";
-import PlainTable from "@/components/widgets/list/PlainTable";
 import VWidget from "@/components/VWidget";
 import Material from "vuetify/es5/util/colors";
-import VCircle from "@/components/circle/VCircle";
 import BoxChart from "@/components/widgets/chart/BoxChart";
 import CircleStatistic from "@/components/widgets/statistic/CircleStatistic";
 import LinearStatistic from "@/components/widgets/statistic/LinearStatistic";
@@ -231,13 +161,11 @@ export default {
   components: {
     VWidget,
     MiniStatistic,
-    VCircle,
     ProfileCard,
     EChart,
     BoxChart,
     CircleStatistic,
-    LinearStatistic,
-    PlainTable
+    LinearStatistic
   },
   data: () => ({
     color: Material,

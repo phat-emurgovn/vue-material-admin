@@ -22,7 +22,6 @@
         <v-list-tile
           v-for="(item, index) in items"
           :to="!item.href ? { name: item.name } : null"
-          :href="item.href"
           @click="item.click"
           ripple="ripple"
           :disabled="item.disabled"
@@ -51,7 +50,7 @@ export default {
     items: [
       {
         icon: "account_circle",
-        href: "#",
+        name: "profile",
         title: "Profile",
         click: e => {
           console.log(e);
